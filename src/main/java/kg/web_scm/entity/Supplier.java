@@ -18,8 +18,8 @@ public class Supplier {
     @Column(name="supplier_name",nullable = false)
     private String supplierName;
     @Column(name="score",nullable = false)
-    private Integer score;
-    @Column(name="lead_time",nullable = false)
     private Integer leadTime;
-
+    @ManyToOne
+    @JoinColumn(name="product_id")
+    private Product product;
 }

@@ -14,9 +14,12 @@ import javax.persistence.*;
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+    private Long id;
     @Column(name="product_quantity",nullable = false)
     private Integer productQuantity;
-    @Column(name="material_quantity",nullable = false)
-    private Integer rawMaterialsQuantity;
+    @Column(name="cost",nullable = false)
+    private Integer cost;
+    @OneToOne
+    @JoinColumn(name="product_id",nullable = false)
+    private Product product;
 }

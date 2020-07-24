@@ -20,7 +20,10 @@ public class Product {
     private String name;
     @Column(name="price",nullable = false)
     private Integer price;
-    @Column(name="bill_of_materials")
-    private List<RawMaterials> rawMaterials;
+    @Column(name="description",nullable = false)
+    private String description;
+    //@OneToMany
+    //@JoinColumn(name="bill_of_materials_id")
+    //private List<RawMaterials> rawMaterials;
 
 }

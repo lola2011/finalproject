@@ -17,7 +17,7 @@ public class Inventory {
     private Long id;
     @Column(name="product_quantity",nullable = false)
     private Integer productQuantity;
-    @Column(name="cost",nullable = false)
+    @Column(name="cost")
     private Integer cost;
     @OneToOne
     @JoinColumn(name="product_id",nullable = false)

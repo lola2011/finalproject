@@ -1,8 +1,10 @@
 package kg.web_scm.service;
 
 import kg.web_scm.entity.Inventory;
-import kg.web_scm.entity.OrderPurchase;
+import kg.web_scm.entity.Product;
+import kg.web_scm.model.InventoryModel;
 import kg.web_scm.repository.InventoryRep;
+import kg.web_scm.repository.ProductRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,8 @@ import java.util.List;
 public class InventoryServiceImpl implements InventoryService {
 @Autowired
 private InventoryRep inventoryRep;
-
+@Autowired
+private ProductRep productRepo;
     @Override
     public List<Inventory> getAll() {
         return inventoryRep.findAll();
@@ -23,10 +26,15 @@ private InventoryRep inventoryRep;
     }
 
     @Override
-    public Inventory create(Inventory inventory) {
-        return inventoryRep.save(inventory);
+    public Inventory create(InventoryModel inventoryModel) {
+      Long productId= inventoryModel.getProductId();
+       Product product = new Product();
+      Inventory inventory=new Inventory();
+      inventory.setProduct(productRepo.findById(productId).orElse(null));
+      inventory.setCost(null);
+      inventory.setProductQuantity(inventoryModel.getProductQuantity());
+   return inventoryRep.save(inventory);
     }
-
     @Override
     public Inventory update(Inventory inventory) {
         return inventoryRep.save(inventory);
@@ -41,12 +49,9 @@ private InventoryRep inventoryRep;
     return inventory;
     }
 
-    /*public Inventory recount() {
-        Integer n = orderPurchase.getQuantity();
-        Integer i = inventory.getProductQuantity();
-        if (orderPurchase.getQuantity() == n){
-            inventory.setProductQuantity(i - n);
-
+    @Override
+    public Inventory getInventoryByProduct(Long id) {
+        return inventoryRep.findInventoryByProductId(id);
     }
-        return inventory;*/
+
     }

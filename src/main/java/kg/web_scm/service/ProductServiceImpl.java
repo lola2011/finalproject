@@ -10,6 +10,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
    private ProductRep productRep;
+
     @Override
     public List<Product> getAll() {
         return productRep.findAll();
@@ -22,7 +23,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(Product product) {
-        return productRep.save(product);
+
+        return productRep.save(product) ;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package kg.web_scm.service;
 
 import kg.web_scm.entity.Inventory;
+import kg.web_scm.model.InventoryModel;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface InventoryService {
@@ -10,8 +10,11 @@ public interface InventoryService {
 
     Inventory getById(Long id);
 
-    Inventory create(Inventory inventory);
+    Inventory create(InventoryModel inventoryModel);
 
     Inventory update(Inventory inventory);
 
-    Inventory deleteById(Long id);}
+    Inventory deleteById(Long id);
+
+Inventory getInventoryByProduct(Long id);
+}

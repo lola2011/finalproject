@@ -22,4 +22,7 @@ public class Supplier {
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
-}
+
+
+
+    }

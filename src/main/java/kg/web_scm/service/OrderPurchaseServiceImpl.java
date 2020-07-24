@@ -36,19 +36,19 @@ public class OrderPurchaseServiceImpl implements OrderPurchaseService {
 
     @Override
     public OrderPurchase create(PurchaseModel purchaseModel) {
-
         Long productId =purchaseModel.getProductId();
         Inventory inventory = inventoryRep.findInventoryByProductId(productId);
         if(inventory.getProductQuantity()-purchaseModel.getProductQuantity()>=0){
             inventory.setProductQuantity(inventory.getProductQuantity()-purchaseModel.getProductQuantity());
             inventoryRep.save(inventory);
         }
+        Product product=new Product();
         OrderPurchase orderPurchase= new OrderPurchase();
         orderPurchase.setProduct(productRep.findById(productId).orElse(null));
         orderPurchase.setQuantity(purchaseModel.getProductQuantity());
         orderPurchase.setDueDate(LocalDateTime.now());
         orderPurchase.setOrderDate(LocalDateTime.now());
-        orderPurchase.setSum(purchaseModel.getProductQuantity()*inventory.getCost());
+        orderPurchase.setSum(purchaseModel.getProductQuantity()*product.getPrice());
         return orderPurchaseRep.save(orderPurchase);
     }
 

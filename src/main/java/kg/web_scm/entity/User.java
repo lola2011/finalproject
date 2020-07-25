@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -33,12 +32,7 @@ public class User {
         @Column(name="is_active",nullable = false)
         private Integer isActive;
 
-        public User(String login,String password,Integer isActive) {
-                this.login = login;
-                this.password=password;
-                this.isActive=isActive;
-        }
-//@ManyToMany
+        //@ManyToMany
         //@JoinTable(name = "user_roles",joinColumns = {@JoinColumn(name = "id")},inverseJoinColumns = {@JoinColumn(name = "role_id")})
         //private List<UserRole> roles;
 

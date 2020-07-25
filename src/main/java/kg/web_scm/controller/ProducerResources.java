@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.jms.Queue;
 
 @RestController
-@RequestMapping("/rest/publish")
+@RequestMapping("/api/publish")
 public class ProducerResources {
     @Autowired
     private JmsTemplate jmsTemplate;

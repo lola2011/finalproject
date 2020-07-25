@@ -17,11 +17,12 @@ public class Supplier {
     private Long id;
     @Column(name="supplier_name",nullable = false)
     private String supplierName;
-    @Column(name="score",nullable = false)
+    @Column(name="leadTime",nullable = false)
     private Integer leadTime;
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
+
 
 
 

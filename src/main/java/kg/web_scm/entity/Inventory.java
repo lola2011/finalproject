@@ -20,6 +20,6 @@ public class Inventory {
     @Column(name="cost")
     private Integer cost;
     @OneToOne
-    @JoinColumn(name="product_id",nullable = false)
+    @JoinColumn(name="product_id")
     private Product product;
 }

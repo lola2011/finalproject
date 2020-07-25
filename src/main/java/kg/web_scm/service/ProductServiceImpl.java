@@ -1,6 +1,8 @@
 package kg.web_scm.service;
 
+import kg.web_scm.entity.Inventory;
 import kg.web_scm.entity.Product;
+import kg.web_scm.repository.InventoryRep;
 import kg.web_scm.repository.ProductRep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
    private ProductRep productRep;
-
+    @Autowired
+    private InventoryRep inventoryRep;
     @Override
     public List<Product> getAll() {
         return productRep.findAll();
@@ -24,7 +27,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product create(Product product) {
 
-        return productRep.save(product) ;
+
+        Product productSaved = productRep.save(product);
+
+        Inventory inventory=new Inventory();
+        inventory.setProduct(productSaved);
+        //productRep.findBy;
+        inventory.setProductQuantity(50);
+        inventory.setCost(50);
+        inventoryRep.save(inventory);
+        return productSaved;
     }
 
     @Override

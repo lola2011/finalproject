@@ -13,20 +13,17 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="orders")
-public class OrderPurchase {
+@Table(name="sales")
+public class Sales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name="quantity",nullable = false)
     private Integer quantity;
     @Column(name="total_sum")
     private Integer sum;
     @Column(name="order_date",nullable = false)
     private LocalDateTime orderDate;
-    @Column(name="due_date")
-    private LocalDateTime dueDate;
     @ManyToOne
     @JoinColumn(name="product_id",nullable = false)
     private Product product;

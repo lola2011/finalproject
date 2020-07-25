@@ -14,7 +14,7 @@ public class Init implements CommandLineRunner {
     private UserService userService;
     @Override
     public void run(String... args) throws Exception {
-userService.create(new User("lena_25","123445",1));
+//userService.create(new User("lena_25","123445",1));
     }
 
 }

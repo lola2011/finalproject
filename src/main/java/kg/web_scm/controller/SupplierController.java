@@ -19,7 +19,7 @@ public class SupplierController {
     private ProductService productService;
 
     @GetMapping
-    public List<kg.web_scm.entity.Supplier> getAll() {
+    public List<Supplier> getAll() {
         return supplierService.getAll();
 
     }

@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierRep supplierRep;
-@Autowired
-private ProductService productService;
+    @Autowired
+    private ProductService productService;
+
     @Override
     public List<Supplier> getAll() {
         return supplierRep.findAll();
@@ -38,16 +40,17 @@ private ProductService productService;
     @Override
     public Supplier create(SupplierModel supplierModel) {
 
-        Product product=(Product) productService.getById(supplierModel.getProductId());
-        if(product==null)
+        Product product = productService.getById(supplierModel.getProductId());
+        if (product == null)
             return null;
-        Supplier supplier= new Supplier();
+        Supplier supplier = new Supplier();
         supplier.setLeadTime(supplierModel.getLeadTime());
         supplier.setSupplierName(supplierModel.getSupplierName());
         supplier.setProduct(product);
         return supplierRep.save(supplier);
 
     }
+
     @Override
     public Supplier update(Supplier supplier) {
         return supplierRep.save(supplier);
